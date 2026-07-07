@@ -40,7 +40,7 @@
             pointer-events: none;
         }
 
-        /* ===== KONTEN UTAMA ===== */
+        /* ===== KONTEN UTAMA (Cuma Teks) ===== */
         .container {
             position: relative;
             z-index: 2;
@@ -54,21 +54,6 @@
         @keyframes fadeIn {
             0% { opacity: 0; transform: scale(0.95); }
             100% { opacity: 1; transform: scale(1); }
-        }
-
-        .itachi-image {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.6), 0 0 100px rgba(200, 0, 0, 0.3);
-            border: 3px solid #cc0000;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
         }
 
         .container h1 {
@@ -98,7 +83,6 @@
             border-radius: 15px;
             border-left: 4px solid #cc0000;
             backdrop-filter: blur(5px);
-            margin-bottom: 0; /* Dihilangkan margin bawah karena tombol sudah tidak ada */
         }
 
         @keyframes glitch {
@@ -155,13 +139,8 @@
     <div class="sharingan top-left">🌀</div>
     <div class="sharingan bottom-right">🌀</div>
 
-    <!-- ===== KONTEN UTAMA ===== -->
+    <!-- ===== KONTEN UTAMA (HANYA TEKS) ===== -->
     <div class="container">
-        <!-- GANTI NAMA FILE GAMBAR DI BAWAH INI -->
-        <img class="itachi-image" 
-             src="https://raw.githubusercontent.com/riskiibrahim123456/riskiibrahim123456.github.io/main/NAMA_FILE_GAMBAR.jpg" 
-             alt="Itachi Uchiha">
-        
         <h1>ITACHI</h1>
         <h2>UCHIHA</h2>
         <p>
@@ -169,18 +148,15 @@
             terkadang kau harus mengorbankan yang lain."<br>
             <span style="color:#cc0000; font-style:italic;">— Itachi Uchiha</span>
         </p>
-        <!-- Tombol Sharingan sudah dihapus -->
     </div>
 
     <script>
         const video = document.getElementById('intro-video');
 
-        // Saat video selesai, sembunyikan dengan efek fade
         video.addEventListener('ended', function() {
             video.classList.add('hide');
         });
 
-        // Cadangan: hilangkan setelah 13 detik (untuk video 12 detik + cadangan)
         setTimeout(function() {
             if (!video.classList.contains('hide')) {
                 video.classList.add('hide');
