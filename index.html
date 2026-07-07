@@ -128,16 +128,14 @@
 </head>
 <body>
 
-    <!-- ===== INTRO VIDEO (10 DETIK) ===== -->
-    <video id="intro-video" autoplay playsinline>
+    <!-- VIDEO DENGAN MUTED (DIJAMIN JALAN) -->
+    <video id="intro-video" autoplay muted playsinline>
         <source src="https://raw.githubusercontent.com/riskiibrahim123456/riskiibrahim123456.github.io/main/a8e5890b38990fad919aa40ab7bc5717.mp4" type="video/mp4">
     </video>
 
-    <!-- ===== HIASAN ===== -->
     <div class="sharingan top-left">🌀</div>
     <div class="sharingan bottom-right">🌀</div>
 
-    <!-- ===== KONTEN UTAMA ===== -->
     <div class="container">
         <h1>ITACHI</h1>
         <h2>UCHIHA</h2>
@@ -155,7 +153,6 @@
             video.classList.add('hide');
         });
 
-        // Cadangan: hilangkan video setelah 11 detik (10 detik video + 1 detik cadangan)
         setTimeout(function() {
             if (!video.classList.contains('hide')) {
                 video.classList.add('hide');
