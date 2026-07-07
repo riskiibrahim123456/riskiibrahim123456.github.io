@@ -128,7 +128,7 @@
 </head>
 <body>
 
-    <!-- ===== INTRO VIDEO BARU (SUARA NYALA) ===== -->
+    <!-- ===== INTRO VIDEO (10 DETIK) ===== -->
     <video id="intro-video" autoplay playsinline>
         <source src="https://raw.githubusercontent.com/riskiibrahim123456/riskiibrahim123456.github.io/main/a8e5890b38990fad919aa40ab7bc5717.mp4" type="video/mp4">
     </video>
@@ -155,11 +155,12 @@
             video.classList.add('hide');
         });
 
+        // Cadangan: hilangkan video setelah 11 detik (10 detik video + 1 detik cadangan)
         setTimeout(function() {
             if (!video.classList.contains('hide')) {
                 video.classList.add('hide');
             }
-        }, 13000);
+        }, 11000);
     </script>
 
 </body>
