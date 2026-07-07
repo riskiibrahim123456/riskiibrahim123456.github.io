@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itachi Uchiha - Tribute</title>
+    <title>Itachi Uchiha</title>
     <style>
+        /* Reset dan background merah-hitam */
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +13,7 @@
         }
 
         body {
-            background: radial-gradient(ellipse at center, #1a0000 0%, #0d0000 50%, #000 100%);
+            background: radial-gradient(ellipse at center, #1a0000 0%, #0d0000 60%, #000 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,7 +23,7 @@
             position: relative;
         }
 
-        /* Efek latar merah gelap berdenyut */
+        /* Efek cahaya merah berdenyut (seperti chakra) */
         body::before {
             content: '';
             position: fixed;
@@ -36,7 +37,7 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.8); }
+            0% { opacity: 0.3; transform: scale(1); }
             100% { opacity: 1; transform: scale(1.2); }
         }
 
@@ -45,59 +46,80 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            color: #fff;
-            padding: 40px;
-            max-width: 800px;
+            padding: 20px;
+            max-width: 700px;
         }
 
+        /* Gambar Itachi */
+        .itachi-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.6), 0 0 100px rgba(200, 0, 0, 0.3);
+            border: 3px solid #cc0000;
+            margin-bottom: 20px;
+            transition: 0.5s;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .itachi-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 80px rgba(255, 0, 0, 0.9);
+        }
+
+        /* Teks judul */
         .container h1 {
-            font-size: 70px;
+            font-size: 55px;
             font-weight: 900;
-            text-transform: uppercase;
             color: #cc0000;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 60px rgba(200, 0, 0, 0.5), 0 0 100px rgba(255, 0, 0, 0.3);
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 60px rgba(200, 0, 0, 0.5);
             letter-spacing: 6px;
             animation: glitch 3s infinite;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .container h2 {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 300;
             color: #aaa;
             text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 8px;
         }
 
+        /* Kutipan */
         .container p {
-            font-size: 18px;
+            font-size: 17px;
             color: #ccc;
             line-height: 1.8;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 18px 25px;
             border-radius: 15px;
             border-left: 4px solid #cc0000;
             backdrop-filter: blur(5px);
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+            margin-bottom: 25px;
         }
 
-        /* Tombol */
+        /* Tombol Sharingan */
         .btn {
             display: inline-block;
-            padding: 15px 45px;
+            padding: 14px 40px;
             background: transparent;
             color: #cc0000;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             border: 2px solid #cc0000;
             border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
             cursor: pointer;
             transition: 0.4s;
-            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
         }
 
@@ -108,32 +130,7 @@
             transform: scale(1.05);
         }
 
-        /* Gagak hitam animasi */
-        .crow {
-            position: fixed;
-            font-size: 40px;
-            color: #111;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-            z-index: 1;
-            animation: fly linear infinite;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        @keyframes fly {
-            0% {
-                transform: translate(-200px, 0) scale(0.5) rotate(0deg);
-                opacity: 0;
-            }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% {
-                transform: translate(110vw, -300px) scale(1.5) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Animasi glitch teks */
+        /* Efek glitch pada teks */
         @keyframes glitch {
             0%, 90%, 100% { opacity: 1; transform: scale(1); }
             92% { opacity: 0.8; transform: scale(1.02) skewX(-2deg); }
@@ -141,7 +138,7 @@
             96% { opacity: 0.9; transform: scale(1.01) skewX(-1deg); }
         }
 
-        /* Efek Sharingan di sudut */
+        /* Simbol Sharingan di sudut */
         .sharingan {
             position: fixed;
             font-size: 120px;
@@ -149,7 +146,7 @@
             color: #ff0000;
             z-index: 0;
             pointer-events: none;
-            animation: rotate 20s linear infinite;
+            animation: spin 20s linear infinite;
         }
 
         .sharingan.top-left {
@@ -165,58 +162,38 @@
             animation-delay: -10s;
         }
 
-        @keyframes rotate {
+        @keyframes spin {
             0% { transform: rotate(0deg) scale(1); }
             50% { transform: rotate(180deg) scale(1.1); }
             100% { transform: rotate(360deg) scale(1); }
         }
 
-        /* Responsif */
+        /* Responsif untuk HP */
         @media (max-width: 600px) {
-            .container h1 {
-                font-size: 40px;
-            }
-            .container h2 {
-                font-size: 18px;
-                letter-spacing: 4px;
-            }
-            .container p {
-                font-size: 14px;
-                padding: 15px;
-            }
-            .btn {
-                font-size: 16px;
-                padding: 12px 30px;
-            }
-            .crow {
-                font-size: 28px;
-            }
+            .container h1 { font-size: 36px; }
+            .container h2 { font-size: 16px; letter-spacing: 4px; }
+            .container p { font-size: 14px; padding: 15px; }
+            .btn { font-size: 14px; padding: 10px 25px; }
+            .itachi-image { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Itachi (menggunakan teks/simbol) -->
+    <!-- Hiasan Sharingan di sudut -->
     <div class="sharingan top-left">🌀</div>
     <div class="sharingan bottom-right">🌀</div>
 
-    <!-- Gagak hitam (animasi) -->
-    <div class="crow" style="animation-duration: 12s; animation-delay: 0s; top: 5%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 15s; animation-delay: 3s; top: 20%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 10s; animation-delay: 6s; top: 50%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 18s; animation-delay: 2s; top: 70%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 14s; animation-delay: 9s; top: 85%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 20s; animation-delay: 5s; top: 35%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 11s; animation-delay: 12s; top: 60%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 16s; animation-delay: 8s; top: 10%; left: -10%;">🐦‍⬛</div>
-    <div class="crow" style="animation-duration: 13s; animation-delay: 15s; top: 45%; left: -10%;">🐦‍⬛</div>
-
-    <!-- Isi Konten -->
     <div class="container">
+        <!-- GANTI LINK GAMBAR DI BAWAH INI -->
+        <img class="itachi-image" 
+             src="https://raw.githubusercontent.com/riskiibrahim123456/riskiibrahim123456.github.io/main/nama_gambar_anda.jpg" 
+             alt="Itachi Uchiha">
+        
         <h1>ITACHI</h1>
         <h2>UCHIHA</h2>
         <p>
-            "Orang-orang hidup tidak semua sama. Untuk melindungi sesorang, 
+            "Orang-orang hidup tidak semua sama. Untuk melindungi seseorang, 
             terkadang kau harus mengorbankan yang lain."<br>
             <span style="color:#cc0000; font-style:italic;">— Itachi Uchiha</span>
         </p>
