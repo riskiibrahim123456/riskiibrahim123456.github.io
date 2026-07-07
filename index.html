@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animasi CSS</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial;
+        }
+        .box {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+        .box:hover {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            color: #333;
+        }
+        .bola {
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            margin: 20px auto;
+            animation: gerak 3s infinite alternate;
+        }
+        @keyframes gerak {
+            0% { transform: translateX(0); background: #ff6b6b; }
+            100% { transform: translateX(100px); background: #4ecdc4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>✨ Animasi Keren</h1>
+        <div class="bola"></div>
+        <p>Arahkan mouse ke kotak ini!</p>
+    </div>
+</body>
+</html>
